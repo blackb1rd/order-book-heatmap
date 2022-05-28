@@ -14,7 +14,16 @@ export default class DashboardManager {
     this.dashboards = [];
   }
 
-  create(el, symbol, updateInterval=250, levels=10, aggregation=1, maxSeriesLength=5, scale='linear', theme='rb') {
+  async create(
+    el,
+    symbol,
+    updateInterval=250,
+    levels=10,
+    aggregation=1,
+    maxSeriesLength=5,
+    scale='linear',
+    theme='rb') {
+    await this.feed.updateExchangeInfo();
     const tickSize = this.feed.getSymbolTickSize(symbol);
     let dashboard = new Dashboard(el, this.feed, symbol, tickSize, updateInterval, levels, aggregation, maxSeriesLength, scale, theme);
 

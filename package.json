@@ -1,6 +1,5 @@
 {
   "name": "order-book-heatmap",
-  "type": "module",
   "version": "1.0.0",
   "description": "This was an exploratory project, that I put together in a couple days in order familiarize myself with the Binance API and the limitations around the live market data streams provided by them. The end-result of this repo is a live order book visualization, although this wasn't the main goal. Keep in mind that if all you need is an order book display most of the code in this repo will be of no use to you.",
   "main": "src/index.js",
@@ -39,7 +38,8 @@
     "ws": "^4.0.0"
   },
   "devDependencies": {
-    "webpack": "^5.24.2",
-    "webpack-cli": "^4.5.0"
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
   }
 }

@@ -31,12 +31,12 @@ export default class UI {
     }
   }
 
-  updateDashboard() {
+  async updateDashboard() {
     if (this.dashboardId !== undefined) {
       this.dm.remove(this.dashboardId);
     }
 
-    this.dashboardId = this.dm.create(
+    this.dashboardId = await this.dm.create(
       this.dashboard,
       this.inputs.symbol,
       this.inputs.updateInterval,

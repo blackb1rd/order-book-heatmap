@@ -1,6 +1,5 @@
 import * as d3 from "d3";
 
-import DataFeed from '../lib/BinanceDataFeed.js';
 import OrderBook from '../lib/BinanceOrderBook.js';
 import Tick from '../lib/Tick.js';
 import { numCompare } from '../lib/utils.js'; 

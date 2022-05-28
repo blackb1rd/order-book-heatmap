@@ -1,12 +1,17 @@
-//const path = require('path');
+const path = require('path');
 
-export default () => ({
+module.exports = {
   entry: './src/index.js',
   target: 'web',
   mode: 'development',
   output: {
-    //path: path.resolve(__dirname, 'dist'),
-    path: '/home/ivo/isomorphic-ws/example/webpack/dist/',
     filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
   },
-});
+  devServer: {
+    static: {                               
+      directory: path.join(__dirname, './dist'),  
+      watch: true
+    }
+ }
+};

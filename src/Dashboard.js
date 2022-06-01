@@ -25,7 +25,6 @@ export default class Dashboard {
 
     this.bufferLevels = 5;
     this.maxSeriesLength = maxSeriesLength;
-    console.log(this.maxSeriesLength);
 
     // snapshot orderbook
     this.orderbook = [];
@@ -295,22 +294,22 @@ export default class Dashboard {
       window.tooltip.style("opacity", 1)
     }
 
-    const mousemove = function(d) {
+    const mousemove = function(event) {
       window.tooltip
-        .html(`${d.type}: ${fmtNum(d.value)}`)
-        .style("left", (d3.mouse(this)[0] + 50) + "px")
-        .style("background-color", d.type === 'ask' ? '#faeaea' : '#eafaea')
-        .style("border-color", d.type === 'ask' ? 'red' : 'green')
-        .style("top", (d3.mouse(this)[1] + 45) + "px")
+        .html(`${this.__data__.type}: ${fmtNum(this.__data__.value)}`)
+        .style("left", (d3.pointer(event, this)[0] + 50) + "px")
+        .style("background-color", this.__data__.type === 'ask' ? '#faeaea' : '#eafaea')
+        .style("border-color", this.__data__.type === 'ask' ? 'red' : 'green')
+        .style("top", (d3.pointer(event, this)[1] + 45) + "px")
     }
 
-    const mousemoveOrderDelta = function(d) {
+    const mousemoveOrderDelta = function(event) {
       window.tooltip
-        .html(d.msgHTML)
-        .style("left", (d3.mouse(this)[0] + 50) + "px")
-        .style("background-color", d.type === 'ask' ? '#faeaea' : '#eafaea')
-        .style("border-color", d.type === 'ask' ? 'red' : 'green')
-        .style("top", (d3.mouse(this)[1]) + "px")
+        .html(this.__data__.msgHTML)
+        .style("left", (d3.pointer(event, this)[0] + 50) + "px")
+        .style("background-color", this.__data__.type === 'ask' ? '#faeaea' : '#eafaea')
+        .style("border-color", this.__data__.type === 'ask' ? 'red' : 'green')
+        .style("top", (d3.pointer(event, this)[1]) + "px")
     }
 
     const mouseleave = function(d) {

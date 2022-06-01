@@ -1,3 +1,5 @@
+import { symbol } from "d3";
+
 export default class UI {
   constructor(dashboardManager) {
     this.inputEl = document.querySelector('.ui');
@@ -11,6 +13,7 @@ export default class UI {
       console.error('Invalid dashboard manager reference');
     }
     this.dm = dashboardManager;
+    
     this.dashboard = document.querySelector('.dashboard');
 
     if (!this.dashboard)
@@ -46,6 +49,14 @@ export default class UI {
       this.inputs.colorScale,
       this.inputs.theme
     );
+
+    var selectSymbol = document.querySelector('.symbol.input-wrapper').querySelector("select");
+    Object.entries(this.dm.feed.symbols).forEach(([key, val]) => {
+      var opt = document.createElement('option');
+      opt.value = key;
+      opt.innerHTML = val.baseAsset + "/" + val.quoteAsset;
+      selectSymbol.appendChild(opt);
+    });
   }
 
   validateInputs(inputs) {

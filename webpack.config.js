@@ -13,5 +13,26 @@ module.exports = {
       directory: path.join(__dirname, './dist'),  
       watch: true
     }
- }
+  },
+  resolve: {
+    fallback: {
+      "fs": false,
+      "tls": false,
+      "net": false,
+      "buffer": false,
+      "zlib": false,
+      "http": false,
+      "https": false,
+      "stream": false,
+      "crypto": false,
+      "url": false,
+      "vm": false,
+      "util": false,
+      "querystring": false,
+      "os": false,
+      "constants": false,
+      "assert": false,
+      path: require.resolve("path-browserify"),
+    }
+  }
 };

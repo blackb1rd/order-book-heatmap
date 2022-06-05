@@ -19,12 +19,6 @@ body {
   padding-right: 10px;
 }
 
-.ui > .github-star {
-  display: inline-block;
-  margin-top: 14px;
-  float: right;
-}
-
 .ui > .labels {
   padding-bottom: 5px;
 }

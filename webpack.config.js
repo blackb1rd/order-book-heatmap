@@ -5,6 +5,8 @@ module.exports = {
   entry: './src/index.js',
   target: 'web',
   mode: 'development',
+  // Define development options
+  devtool: "source-map",
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -40,31 +42,31 @@ module.exports = {
     rules: [
       {
         test: /\.(scss)$/,
-        use: [
-          {
-            // Adds CSS to the DOM by injecting a `<style>` tag
+        use: [{
+            // inject CSS to page
             loader: 'style-loader'
-          },
-          {
-            // Interprets `@import` and `url()` like `import/require()` and will resolve them
+          }, {
+            // translates CSS into CommonJS modules
             loader: 'css-loader'
-          },
-          {
-            // Loader for webpack to process CSS with PostCSS
+          }, {
+            // Run postcss actions
             loader: 'postcss-loader',
             options: {
-              plugins: function () {
-                return [
-                  require('autoprefixer')
-                ];
+              // `postcssOptions` is needed for postcss 8.x;
+              // if you use postcss 7.x skip the key
+              postcssOptions: {
+                // postcss plugins, can be exported to postcss.config.js
+                plugins: function () {
+                  return [
+                    require('autoprefixer')
+                  ];
+                }
               }
             }
-          },
-          {
-            // Loads a SASS/SCSS file and compiles it to CSS
+          }, {
+            // compiles Sass to CSS
             loader: 'sass-loader'
-          }
-        ]
+        }]
       }
     ]
   },

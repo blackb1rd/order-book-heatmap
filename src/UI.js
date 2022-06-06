@@ -24,7 +24,6 @@ export default class UI {
   }
 
   updateInputs() {
-    console.log('updateInputs');
     const inputs = this.parseInputs();
     const areInputsValid = this.validateInputs(inputs);
 
@@ -50,7 +49,7 @@ export default class UI {
       this.inputs.theme
     );
 
-    var selectSymbol = document.querySelector('.symbol.input-wrapper').querySelector("select");
+    var selectSymbol = document.querySelector('#floatingSymbol');
     Object.entries(this.dm.feed.symbols).forEach(([key, val]) => {
       var opt = document.createElement('option');
       opt.value = key;
@@ -109,13 +108,13 @@ export default class UI {
   }
 
   parseInputs() {
-    const symbol = this.inputEl.querySelector('.symbol select').value;
-    const updateInterval = parseInt(this.inputEl.querySelector('.update-interval select').value);
-    const maxHeatmapSize = parseInt(this.inputEl.querySelector('.heatmap-size select').value);
-    const levels = parseInt(this.inputEl.querySelector('.levels select').value);
-    const aggregation = parseInt(this.inputEl.querySelector('.aggregation select').value);
-    const colorScale = this.inputEl.querySelector('.scale select').value;
-    const theme = this.inputEl.querySelector('.theme select').value;
+    const symbol = this.inputEl.querySelector('#floatingSymbol').value;
+    const updateInterval = parseInt(this.inputEl.querySelector('#floatingInterval').value);
+    const maxHeatmapSize = parseInt(this.inputEl.querySelector('#floatingHeatmapSize').value);
+    const levels = parseInt(this.inputEl.querySelector('#floatingLevel').value);
+    const aggregation = parseInt(this.inputEl.querySelector('#floatingAggregation').value);
+    const colorScale = this.inputEl.querySelector('#floatingScale').value;
+    const theme = this.inputEl.querySelector('#floatingTheme').value;
 
     return {
       symbol,
